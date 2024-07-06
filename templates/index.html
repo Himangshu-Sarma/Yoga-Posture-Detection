@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    * {
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      padding-top: 2em;
+      color: #4c4444;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      font-size: larger;
+    }
+    /* .afterDetect {
+      gap: 1em;
+      font-size: larger;
+    } */
+
+  </style>
+
+  <header>
+    <h2>Yoga Posture Detector made with <span style="color: rgb(202, 32, 32);"> &#9829; </span></h2>
+  </header>
+  <body>
+    <h2>Upload File</h2>
+    <form
+      action="http://localhost:8000/predict"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      Select image to upload:
+      <input type="file" name="file" id="file" />
+      <input type="submit" value="Detect posture" name="submit" />
+    </form>
+
+    <div id="Detected">
+      <p id="clas">Detect pose is : <i>{{clas}}</i></p> 
+      <p id="confidence">Confidence is : <i>{{confidence}}</i></p>
+    </div>
+  </body>
+
+  <script>
+    const variableContainer1 = document.getElementById("clas");
+    const clas = '{{ clas }}'; 
+
+    if (clas) {
+      variableContainer1.textContent = 'Detected pose is: ' + clas;
+    }
+
+    const variableContainer2 = document.getElementById("confidence");
+    const confidence = '{{ confidence }}'; 
+
+    if (clas) { 
+      variableContainer2.textContent = 'Confidence is: ' + confidence;
+    }
+  </script>
+</html>
