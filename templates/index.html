@@ -11,11 +11,24 @@
     body {
       padding-top: 2em;
       color: #4c4444;
+      background-color: rgb(229, 221, 221);
     }
     form {
       display: flex;
       flex-direction: column;
       gap: 1em;
+      font-size: larger;
+    }
+    #clas {
+      color: rgb(47, 99, 136);
+      font-size: large;
+    }
+    #confidence {
+      color: rgb(47, 99, 136);
+      font-size: large;
+    }
+    span {
+      color: rgb(47, 99, 136);
       font-size: larger;
     }
     /* .afterDetect {
@@ -26,10 +39,10 @@
   </style>
 
   <header>
-    <h2>Yoga Posture Detector made with <span style="color: rgb(202, 32, 32);"> &#9829; </span></h2>
+    <h2>Yoga Posture Detector made to detect your <span style="color: rgb(183, 54, 54);"> Poses </span></h2>
   </header>
   <body>
-    <h2>Upload File</h2>
+    <h2>Upload and Detect</h2>
     <form
       action="http://localhost:8000/predict"
       method="post"
@@ -41,21 +54,21 @@
     </form>
 
     <div id="Detected">
-      <p id="clas">Detect pose is : <i>{{clas}}</i></p> 
-      <p id="confidence">Confidence is : <i>{{confidence}}</i></p>
+      <p id="clas">Detected pose : <span>{{clas}}</span></p> 
+      <p id="confidence">Confidence : <span>{{confidence}}</span></p>
     </div>
   </body>
 
   <script>
-    const variableContainer1 = document.getElementById("clas");
-    const clas = '{{ clas }}'; 
+    var variableContainer1 = document.getElementById("clas");
+    var clas = '{{ clas }}'; 
 
     if (clas) {
       variableContainer1.textContent = 'Detected pose is: ' + clas;
     }
 
-    const variableContainer2 = document.getElementById("confidence");
-    const confidence = '{{ confidence }}'; 
+    var variableContainer2 = document.getElementById("confidence");
+    var confidence = '{{ confidence }}'; 
 
     if (clas) { 
       variableContainer2.textContent = 'Confidence is: ' + confidence;
